@@ -39,7 +39,7 @@ Google maps
 ### Chatbot
 ```
 DialogFlowAPI
-The chatbot is designed to assist customers in finding answers to Frequently Asked Questions
+The chatbot is designed to assist customers in finding answers to Frequently Asked Questions(FAQ's)
 ```
 ### Tech Stack Used
 ```
