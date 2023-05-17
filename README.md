@@ -50,7 +50,7 @@ Amd Instance(T2D Server)
 ### APIs
 ```
 Plant.id
-Open weather map
+open-meteo.com
 Map Box
 ```
 ### Chatbot
