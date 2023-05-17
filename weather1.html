@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FarmBuddy</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+    />
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="weather1.css" />
+  </head>
+  <body>
+    <!-- header section starts  -->
+
+    <div class="spinnerContainer">
+      <div class="spinner"></div>
+      <div class="loader">
+        <p>loading</p>
+        <div class="words">
+          <span class="word">locations</span>
+          <span class="word">clouds</span>
+          <span class="word">rain</span>
+          <span class="word">thunders</span>
+          <span class="word">sun</span>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <a href="#" class="nav-link logo">
+        <i class="fas fa-seedling"></i> FarmBuddy
+      </a>
+
+      <nav class="navbar">
+        <a href="index.html" class="nav-link">home</a>
+        <a href="index.html" class="nav-link">features</a>
+        <a href="index.html"class="nav-link">categories</a>
+        <a href="index.html"class="nav-link">products</a>
+        <a href="index.html"class="nav-link">Learn</a>
+        <a href="index.html"class="nav-link">Team</a>
+        <a class="sin" href="./signup.html">Sign in/up</a>
+      </nav>
+
+      <div class="icons">
+        <div class="fas fa-bars" id="menu-btn"></div>
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-user" id="login-btn"></div>
+      </div>
+    </header>
+    
+<div id="lod">
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+    <div class="col-lg-8 grid-margin stretch-card">
+                  <!--weather card-->
+                  <div class="card card-weather">
+                    <div class="card-body">
+                      <div class="weather-date-location">
+                        <h3>Friday</h3>
+                        <p class="text-gray">
+                          <span class="weather-date">20 May, 2023<br></span>
+                          <span class="weather-location">Bengaluru, India</span>
+                        </p>
+                      </div>
+                      <div class="weather-data d-flex">
+                        <div class="mr-auto">
+                          <h4 class="display-3" id="temp">32
+                            <span class="symbol">&deg;</span>C</h4>
+                          <p>
+                            
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body p-0">
+                      <div class="d-flex weakly-weather">
+                        <div class="weakly-weather-item">
+                          <p class="mb-0">
+                            Sun
+                          </p>
+                          <i class="mdi mdi-weather-partlycloudy"></i>
+                          <p class="mb-0 dtemp">
+                            30&deg;
+                          </p>
+                        </div>
+                        <div class="weakly-weather-item">
+                          <p class="mb-1">
+                            Mon
+                          </p>
+                          <i class="mdi mdi-weather-partlycloudy"></i>
+                          <p class="mb-0 dtemp">
+                            31&deg;
+                          </p>
+                        </div>
+                        <div class="weakly-weather-item">
+                          <p class="mb-1">
+                            Tue
+                          </p>
+                          <i class="mdi mdi-weather-partlycloudy"></i>
+                          <p class="mb-0 dtemp">
+                            28&deg;
+                          </p>
+                        </div>
+                        <div class="weakly-weather-item">
+                          <p class="mb-1">
+                            Wed
+                          </p>
+                          <i class="mdi mdi-weather-partlycloudy"></i>
+                          <p class="mb-0 dtemp">
+                            30&deg;
+                          </p>
+                        </div>
+                        <div class="weakly-weather-item">
+                          <p class="mb-1">
+                            Thu
+                          </p>
+                          <i class="mdi mdi-weather-partlycloudy"></i>
+                          <p class="mb-0 dtemp">
+                            29&deg;
+    </p>
+                        </div>
+                        <div class="weakly-weather-item">
+                          <p class="mb-1">
+                            Fri
+                          </p>
+                          <i class="mdi mdi-weather-partlycloudy"></i>
+                          <p class="mb-0 dtemp">
+                            31&deg;
+                          </p>
+                        </div>
+                        <div class="weakly-weather-item">
+                          <p class="mb-1">
+                            Sat
+                          </p>
+                          <i class="mdi mdi-weather-pouring"></i>
+                          <p class="mb-0 dtemp">
+                            32&deg;
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--weather card ends-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe width="560" height="315" style="display: none;" src="https://www.youtube.com/embed/hdI2bqOjy3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="560" height="315" style="display: none;" src="https://www.youtube.com/embed/hdI2bqOjy3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="560" height="315" style="display: none;" src="https://www.youtube.com/embed/hdI2bqOjy3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="560" height="315" style="display: none;" src="https://www.youtube.com/embed/hdI2bqOjy3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <!-- footer section starts  -->
+
+   
+  
+      <!-- footer section ends -->
+   
+
+
+    <!-- footer section ends -->
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+      import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+      import {getDatabase, ref, get, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"; 
+
+      const firebaseConfig = {
+  apiKey: "AIzaSyAYWp1h1C2AALmc39b6cqwv6GSqlWQrR1c",
+  authDomain: "farmbuddy-106.firebaseapp.com",
+  databaseURL: "https://farmbuddy-106-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "farmbuddy-106",
+  storageBucket: "farmbuddy-106.appspot.com",
+  messagingSenderId: "246405477593",
+  appId: "1:246405477593:web:76c615bf7f242294317ac8"
+};
+// Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase();
+
+       function GetData() {
+            const dbref = ref(db);
+
+            get(child(dbref, "people/" + "Name"))
+            .then((snapshot)=>{
+                if(snapshot.exists()){
+                    
+                   //console.log(snapshot.val().status);
+                    //console.log(snapshot.val().Name);
+                    if(snapshot.val().status==="true")
+                    {
+                        document.querySelector(".sin").style.display="none"; 
+                        document.querySelector("#login-btn").style.display="visible";
+                  
+                       }
+                    else{
+                        document.querySelector("#login-btn").style.display="none";
+                    }
+} 
+else{
+                alert("error");
+              }
+            
+            }
+              
+              )}
+          
+        GetData();
+    // Get the cart button element
+    var cartBtn = document.getElementById('cart-btn');
+
+    // Add click event listener
+    cartBtn.addEventListener('click', function() {
+      // Redirect to the sample page URL
+      window.location.href = './cart.html';
+    });
+
+    const profile=document.getElementById('login-btn');
+    profile.addEventListener('click',function(){
+      window.location.href="./profile.html";
+    })
+
+  </script>
+
+    <!-- custom js file link  -->
+    <script src="weather1.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1%22%3E"> </script>
+
+  </body>
+</html>

@@ -1,0 +1,479 @@
+<html>
+  <head>
+    <title>FarmBuddy</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="map.css">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <style>
+     
+      /* Styles for the map and table */
+      /* /* body { margin: 0; padding: 0; }#map { position: absolute; top: 0; bottom: 0; width: 100%; } */
+    #marker {
+        background-image: url('./marker1.jpeg');        background-size: cover;
+        width: 50px;        height: 50px;
+        border-radius: 50%;        cursor: pointer;
+    } 
+    #marker-2 {
+        background-image: url('./marker2.jpeg');        background-size: cover;
+        width: 50px;        height: 50px;
+        border-radius: 50%;        cursor: pointer;
+    } 
+    #marker-3 {
+        background-image: url('./marker3.jpeg');        background-size: cover;
+        width: 50px;        height: 50px;
+        border-radius: 50%;        cursor: pointer;
+    } 
+    #marker-4 {
+        background-image: url('./marker4.jpeg');        background-size: cover;
+        width: 50px;        height: 50px;
+        border-radius: 50%;        cursor: pointer;
+    } 
+    #marker-5 {
+        background-image: url('./marker5.jpeg');        background-size: cover;
+        width: 50px;        height: 50px;
+        border-radius: 50%;        cursor: pointer;
+    } 
+
+    .mapboxgl-popup {        max-width: 200px;
+    }
+
+      #map-container {
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: left;
+        border: 3px solid #ddd;
+        box-sizing: border-box;
+      }
+
+      #map {
+        width: 100%;
+        height: 100%;
+      }
+
+      #container {
+        width: 40%;
+        height: 100%;
+        float: right;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+      }
+
+      #table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      #table td, #table th {
+        border: 1px solid #ddd;
+        padding: 1px;
+        text-align: left;
+      }
+
+      #table tr:nth-child(even){background-color: #f2f2f2;}
+
+      #table tr:hover {background-color: #ddd;}
+
+
+      #gfg{
+        text-align: center;
+        font-size: 5em;
+        position: relative;
+        top: 5em;
+      }
+
+
+      
+  
+  .spinnerContainer {  display: flex;
+    flex-direction: column;  align-items: center;
+  }
+  .spinner {  width: 56px;
+    height: 56px;  display: grid;
+    border: 4px solid #0000;  border-radius: 50%;
+    border-right-color: #006400;  animation: tri-spinner 1s infinite linear;
+  }
+  .spinner::before,.spinner::after {
+    content: "";  grid-area: 1/1;
+    margin: 2px;  border: inherit;
+    border-radius: 50%;  animation: tri-spinner 2s infinite;
+  }
+  .spinner::after {  margin: 8px;
+    animation-duration: 3s;}
+  @keyframes tri-spinner {
+    100% {    transform: rotate(1turn);
+    }}
+  .loader {
+    color: #4a4a4a;  font-family: "Poppins",sans-serif;
+    font-weight: 500;  font-size: 25px;
+    -webkit-box-sizing: content-box;  box-sizing: content-box;
+    height: 40px;  padding: 10px 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;  border-radius: 8px;
+  }
+  .words {  overflow: hidden;
+  }
+  .word {  display: block;
+    height: 100%;  padding-left: 6px;
+    color: #006400;  animation: cycle-words 5s infinite;
+  }
+  @keyframes cycle-words {  10% {
+      -webkit-transform: translateY(-105%);    transform: translateY(-105%);
+    }
+    25% {    -webkit-transform: translateY(-100%);
+      transform: translateY(-100%);  }
+    35% {
+      -webkit-transform: translateY(-205%);    transform: translateY(-205%);
+    }
+    50% {    -webkit-transform: translateY(-200%);
+      transform: translateY(-200%);  }
+    60% {
+      -webkit-transform: translateY(-305%);    transform: translateY(-305%);
+    }
+    75% {    -webkit-transform: translateY(-300%);
+      transform: translateY(-300%);  }
+    85% {
+      -webkit-transform: translateY(-405%);    transform: translateY(-405%);
+    }
+    100% {    -webkit-transform: translateY(-400%);
+      transform: translateY(-400%);  }
+  }.spinnerContainer{
+    height: 100vh;  display: flex;
+    justify-content: center;  align-items: center;
+  }
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+        />
+    
+        <!-- font awesome cdn link  -->
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        />
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+    
+        <!-- custom css file link  -->
+        <link rel="stylesheet" href="map.css" />
+      </head>
+      <body>
+
+
+        <div class="spinnerContainer">
+          <div class="spinner"></div>
+          <div class="loader">
+            <p>loading</p>
+            <div class="words">
+              <span class="word">maps</span>
+              <span class="word">prices</span>
+              <span class="word">ratings</span>
+              <span class="word">locations</span>
+              <span class="word">markers</span>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+        <!-- header section starts  -->
+    
+        <header class="header">
+          <a href="#" class="nav-link logo">
+            <i class="fas fa-seedling"></i> FarmBuddy
+          </a>
+    
+          <nav class="navbar">
+            <a href="index.html" class="nav-link">home</a>
+            <a href="index.html" class="nav-link">features</a>
+            <a href="index.html"class="nav-link">categories</a>
+            <a href="cart.html"class="nav-link">products</a>
+            <a href="index.html"class="nav-link">Learn</a>
+            <a href="index.html"class="nav-link">Team</a>
+          </nav>
+    
+          <div class="icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+            <div class="fas fa-user" id="login-btn"></div>
+          </div>
+        </header>
+      
+          <!-- footer section ends -->
+      
+    
+    
+        <!-- footer section ends -->
+    
+        <div id="lod">
+          <!-- Map and table -->
+          <div id="map-container">
+            <div id="map">
+              <!-- Embed your map here using an iframe or other method -->
+            </div>
+          </div>
+          
+          <div id="container">
+            <div id="img">
+              
+            </div>
+            <div id="table">
+              <h1 id="gfg">click on the marker to view the details </h1>
+            </div>
+          </div>
+
+          <iframe width="560" height="315" style="display: none;" src="https://www.youtube.com/embed/hdI2bqOjy3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe width="560" height="315" style="display: none;" src="https://www.youtube.com/embed/hdI2bqOjy3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe width="560" height="315" style="display: none;" src="https://www.youtube.com/embed/hdI2bqOjy3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+      
+        </div>
+        <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    
+        <!-- custom js file link  -->
+        <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1%22%3E"> </script>
+        
+    <!-- Add your map script here -->
+    
+    <script src="map.js"></script>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoidGludGVuNyIsImEiOiJjbGhuZWdhbXgxNnBkM2ZvcGtjZ3BreTI4In0.a48w2PP9MYvR2NkINZ2RXA';
+
+
+
+function getLocation() { 
+  if (navigator.geolocation) { 
+    navigator.geolocation.watchPosition(showPosition); 
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";    
+    } 
+}
+
+function showPosition(position) { 
+   const map = new mapboxgl.Map({
+container: 'map',
+// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+style: 'mapbox://styles/mapbox/streets-v12',
+center: [position.coords.longitude,position.coords.latitude ],
+zoom: 10
+});
+
+
+
+
+
+let img = document.getElementById('img');
+let tb = document.getElementById('table');
+  
+const monument = [77.69231381622431,12.933933223617524]; 
+const monument1 = [77.59593669548829,12.971778702952586]; 
+const monument2 = [77.59092124560216,12.979601000155904];
+const monument3 = [83.40079078439622,18.020476533971706];
+const monument4 = [83.36335450896462,17.78070662467046 ];
+
+// create DOM element for the marker 
+const el = document.createElement('div'); 
+el.id = 'marker'; 
+  
+// create the marker 
+new mapboxgl.Marker(el) 
+.setLngLat(monument) 
+.addTo(map);
+
+const el1 = document.createElement('div'); 
+el1.id = 'marker-2'; 
+  
+// create the marker 
+new mapboxgl.Marker(el1) 
+.setLngLat(monument1) 
+.addTo(map);
+
+const el2 = document.createElement('div'); 
+el2.id = 'marker-3'; 
+  
+// create the marker 
+new mapboxgl.Marker(el2) 
+.setLngLat(monument2) 
+.addTo(map);
+
+const el3 = document.createElement('div'); 
+el3.id = 'marker-4'; 
+  
+// create the marker 
+new mapboxgl.Marker(el3) 
+.setLngLat(monument3) 
+.addTo(map);
+
+const el4 = document.createElement('div'); 
+el4.id = 'marker-5'; 
+  
+// create the marker 
+new mapboxgl.Marker(el4) 
+.setLngLat(monument4) 
+.addTo(map);
+
+el.addEventListener('click', () => { 
+  img.style.backgroundImage = "url('./marker1.jpeg')";
+  img.style.backgroundSize = "cover";
+  img.style.width = "100%";
+  img.style.height = "50%";
+      tb.innerHTML =` 
+      <h2 style="margin-top:2em;margin-left:1.2em;">Location :New Horizon College of Engineering </h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Area : 5 acres</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Lease per Acre for an Year: $80,000 & Above </h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Owner : Sidh Babu</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Contact :6969696969 </h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Rating :4.5 of 5 </h2>
+      `;
+            });
+
+el1.addEventListener('click', () => { 
+  img.style.backgroundImage = "url('./marker2.jpeg')";
+  img.style.backgroundSize = "cover";
+  img.style.width = "100%";
+  img.style.height = "50%";
+      tb.innerHTML =`
+      <h2 style="margin-top:2em;margin-left:1.2em;">Location : UBC </h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Area :15 acres </h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Lease per Acre for an Year:1,00,000 </h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Owner : Gow Babu </h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Contact : 1061061061</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Rating : 4.8 of 5 </h2>
+      `
+    });
+el2.addEventListener('click', () => { 
+  img.style.backgroundImage = "url('./marker3.jpeg')";
+  img.style.backgroundSize = "cover";
+  img.style.width = "100%";
+  img.style.height = "50%";
+      tb.innerHTML =`  
+      <h2 style="margin-top:2em;margin-left:1.2em;">Location : Vidhana Soudha </h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Area : 10 acres</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Lease per Acre for an Year: $90,000</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Owner : Esu Babu</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Contact : 1234567890</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Rating : 4.9 of 5</h2>
+      `
+    });
+
+    el3.addEventListener('click', () => { 
+      img.style.backgroundImage = "url('./marker4.jpeg')";
+  img.style.backgroundSize = "cover";
+  img.style.width = "100%";
+  img.style.height = "50%";
+      tb.innerHTML =` 
+      <h2 style="margin-top:2em;margin-left:1.2em;">Location : Lendi</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Area : 12 acres</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Lease per Acre for an Year: 60,000</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Owner : Bosu Babu</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Contact : 0987654321</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Rating : 3.9 of 5</h2>
+      `
+    });
+
+el4.addEventListener('click', () => { 
+  img.style.backgroundImage = "url('./marker5.jpeg')";
+  img.style.backgroundSize = "cover";
+  img.style.width = "100%";
+  img.style.height = "50%";
+      tb.innerHTML =`
+      <h2 style="margin-top:2em;margin-left:1.2em;">Location : Vaisakhi</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Area : 13 acres </h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Lease per Acre for an Year: 70,000</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Owner : Madhu Babu</h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Contact :6543217890 </h2>
+      <h2 style="margin-top:2em;margin-left:1.2em;">Rating : 4 of 5 </h2>
+      `
+    });
+} 
+getLocation()
+
+
+
+
+</script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+  import {getDatabase, ref, get, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"; 
+
+  const firebaseConfig = {
+apiKey: "AIzaSyAYWp1h1C2AALmc39b6cqwv6GSqlWQrR1c",
+authDomain: "farmbuddy-106.firebaseapp.com",
+databaseURL: "https://farmbuddy-106-default-rtdb.asia-southeast1.firebasedatabase.app",
+projectId: "farmbuddy-106",
+storageBucket: "farmbuddy-106.appspot.com",
+messagingSenderId: "246405477593",
+appId: "1:246405477593:web:76c615bf7f242294317ac8"
+};
+// Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase();
+
+   function GetData() {
+        const dbref = ref(db);
+
+        get(child(dbref, "people/" + "Name"))
+        .then((snapshot)=>{
+            if(snapshot.exists()){
+                
+               //console.log(snapshot.val().status);
+                //console.log(snapshot.val().Name);
+                if(snapshot.val().status==="true")
+                {
+                    document.querySelector(".sin").style.display="none"; 
+                    document.querySelector("#login-btn").style.display="visible";
+              
+                   }
+                else{
+                    document.querySelector("#login-btn").style.display="none";
+                }
+} 
+else{
+            alert("error");
+          }
+        
+        }
+          
+          )}
+      
+    GetData();
+// Get the cart button element
+var cartBtn = document.getElementById('cart-btn');
+
+// Add click event listener
+cartBtn.addEventListener('click', function() {
+  // Redirect to the sample page URL
+  window.location.href = './cart.html';
+});
+
+const profile=document.getElementById('login-btn');
+profile.addEventListener('click',function(){
+  window.location.href="./profile.html";
+})
+
+</script>
+  </body>
+</html>
