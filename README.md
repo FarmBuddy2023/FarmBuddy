@@ -49,9 +49,9 @@ Amd Instance(T2D Server)
 ```
 ### APIs
 ```
-Video SDK
-Open Weather
-Google maps
+Plant.id
+Open weather map
+Map Box
 ```
 ### Chatbot
 ```
