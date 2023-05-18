@@ -157,7 +157,15 @@ document.querySelector('.button').onclick = function sendIdentification() {
     };
 </script>
 
+<script>
+   var cartBtn = document.getElementById("cart-btn");
 
+// Add click event listener
+cartBtn.addEventListener("click", function () {
+  // Redirect to the sample page URL
+  window.location.href = "./cart.html";
+});
+</script>
   
       <!-- footer section ends -->
   
