@@ -139,6 +139,10 @@ function updateCartUI(){
         root.style.setProperty('--after-content', `"${count}"`)
         const subtotal = document.querySelector('.subtotal')
         subtotal.innerHTML = `SubTotal: $ ${total}`
+        const profile=document.querySelector('.checkout');
+        profile.addEventListener('click',function(){
+        window.location.href="./checkout.html";
+    })
     }
     else
     cartIcon.classList.remove('non-empty')
