@@ -31,7 +31,7 @@
             >
             <input
               id="password_field"
-              class="input_field"
+              class="input_field name"
               type="text"
               name="input-name"
               title="Name"
@@ -64,7 +64,7 @@
             <label for="password_field" class="input_label">Card Number</label>
             <input
               id="password_field"
-              class="input_field"
+              class="input_field card"
               type="number"
               name="input-name"
               title="Card Number"
@@ -78,7 +78,7 @@
             <div class="split">
               <input
                 id="password_field"
-                class="input_field"
+                class="input_field expiry"
                 type="text"
                 name="input-name"
                 title="Expiry Date"
@@ -134,9 +134,21 @@
  
       const url = document.querySelector('#btn').addEventListener('click', ()=>
       {
+        const name = document.querySelector('.name')
         const addr = document.querySelector('#password').value;
         const phno = document.querySelector('.phone').value;
-        console.log(addr);
+        const card = document.querySelector('.card')
+        const cvv = document.querySelector('.cvv')
+        const exp = document.querySelector('.expiry')
+        const btn = document.querySelector('#btn')
+
+        btn.addEventListener('click', ()=>{
+
+          if(name.value == '' || addr.value == '' || phno.value == '' || card.value == '' || cvv.value == '' || exp.value == ''){
+            alert('Please dont leave any field empty')
+          }
+       else{
+          console.log(addr);
         const dbref = ref(db);
         get(child(dbref, "people/" + "Name"))
         .then((snapshot)=>{
@@ -149,7 +161,7 @@
                         update(child(dbref, "user/" +name), {
                           Address: addr,
                           orders: order+1,
-                          Phone: phno,
+                          Phone: phno
                         });
                         window.location.href="./profile.html"
                 } else {
@@ -164,8 +176,10 @@
           })
           .catch((error)=>{
             alert(error)
-          }) 
-        });
+          })
+        }
+        })
+      })
     </script>
   </body>
-</html
+</html>
