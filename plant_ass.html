@@ -36,26 +36,27 @@
     <!-- header section starts  -->
 
     <header class="header">
-      <a href="./index.html" class="nav-link logo">
+      <a href="#" class="nav-link logo">
         <i class="fas fa-seedling"></i> FarmBuddy
       </a>
 
       <nav class="navbar">
-        <a href="./index.html" class="nav-link">home</a>
-        <a href="./index.html" class="nav-link">features</a>
-        <a href="./index.html"class="nav-link">categories</a>
-        <a href="./cart.html"class="nav-link">products</a>
-        <a href="./index.html"class="nav-link">Learn</a>
-        <a href="./index.html"class="nav-link">Team</a>
+        <a href="index.html" class="nav-link">home</a>
+        <a href="index.html" class="nav-link">features</a>
+        <a href="index.html"class="nav-link">categories</a>
+        <a href="index.html"class="nav-link">products</a>
+        <a href="index.html"class="nav-link">Learn</a>
+        <a href="index.html"class="nav-link">Team</a>
+        <a class="sin" href="./signup.html">Sign in/up</a>
       </nav>
 
       <div class="icons">
         <div class="fas fa-bars" id="menu-btn"></div>
         <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-user" id="login-btn"></div>
       </div>
-
-      
     </header>
+
 
 
     <div class="containera" style="margin-top: 8em;"> 
@@ -157,15 +158,7 @@ document.querySelector('.button').onclick = function sendIdentification() {
     };
 </script>
 
-<script>
-   var cartBtn = document.getElementById("cart-btn");
 
-// Add click event listener
-cartBtn.addEventListener("click", function () {
-  // Redirect to the sample page URL
-  window.location.href = "./cart.html";
-});
-</script>
   
       <!-- footer section ends -->
   
@@ -174,6 +167,76 @@ cartBtn.addEventListener("click", function () {
     <!-- footer section ends -->
 
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script type="module"> 
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"; 
+      import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"; 
+      import {getDatabase, ref, get, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";  
+ 
+      const firebaseConfig = { 
+  apiKey: "AIzaSyAYWp1h1C2AALmc39b6cqwv6GSqlWQrR1c", 
+  authDomain: "farmbuddy-106.firebaseapp.com", 
+  databaseURL: "https://farmbuddy-106-default-rtdb.asia-southeast1.firebasedatabase.app", 
+  projectId: "farmbuddy-106", 
+  storageBucket: "farmbuddy-106.appspot.com", 
+  messagingSenderId: "246405477593", 
+  appId: "1:246405477593:web:76c615bf7f242294317ac8" 
+}; 
+// Initialize Firebase 
+      const app = initializeApp(firebaseConfig); 
+      const db = getDatabase(); 
+ 
+       function GetData() { 
+            const dbref = ref(db); 
+ 
+            get(child(dbref, "people/" + "Name")) 
+            .then((snapshot)=>{ 
+                if(snapshot.exists()){ 
+                     
+                   //console.log(snapshot.val().status); 
+                    //console.log(snapshot.val().Name); 
+                    if(snapshot.val().status==="true") 
+                    { 
+                        document.querySelector(".sin").style.display="none";  
+                        document.querySelector("#login-btn").style.display="visible"; 
+                        // document.querySelector('.btn-cart-down').addEventListener('click',()=>{ 
+                        //   window.location.href="./cart.html"; 
+                        // }) 
+                       } 
+                    else{ 
+                        document.querySelector("#login-btn").style.display="none"; 
+ 
+                        document.querySelector('#cart-btn').addEventListener('click',()=>{ 
+                          window.location.href="./signup.html"; 
+                        }) 
+                        // document.querySelector('.btn-cart-down').addEventListener('click',()=>{ 
+                        //   window.location.href="./signup.html"; 
+                        // }) 
+                    } 
+}  
+else{ 
+                alert("error"); 
+              } 
+             
+            } 
+               
+              )} 
+           
+        GetData(); 
+    // Get the cart button element 
+    var cartBtn = document.getElementById('cart-btn'); 
+ 
+    // Add click event listener 
+    cartBtn.addEventListener('click', function() { 
+      // Redirect to the sample page URL 
+      window.location.href = './cart.html'; 
+    }); 
+ 
+    const profile=document.getElementById('login-btn'); 
+    profile.addEventListener('click',function(){ 
+      window.location.href="./profile.html"; 
+    }) 
+ 
+  </script>
 
     <!-- custom js file link  -->
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1%22%3E"> </script>
