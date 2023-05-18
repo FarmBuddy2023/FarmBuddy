@@ -27,6 +27,10 @@ html{
     scroll-padding-top: 7rem;
 }
 
+a{
+    text-decoration: none;
+}
+
 body{
     background:#eee;
 }
