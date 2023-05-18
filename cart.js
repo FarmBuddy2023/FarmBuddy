@@ -122,7 +122,7 @@ function updateCartUI(){
                            <h3>${value.name}</h3>
                            <p>${value.desc}
                             <span class="quantity">Quantity: ${value.quantity}</span>
-                               <span class="price">Price: $ ${price}</span>
+                               <span class="price">Price: Rs ${price}</span>
                            </p>
                        </div>
                        <div class="cancel"><i class="fas fa-window-close"></i></div>
@@ -151,6 +151,6 @@ lod.style.display ='none'
 window.addEventListener('load', function() {
   var loader = document.querySelector('.spinnerContainer');
   loader.style.display = 'none';
-head.style.display = 'block'
+head.style.display = 'flex'
 lod.style.display = 'block'
 });
