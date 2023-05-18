@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="website icon" type="png" href="">
-    <link rel="stylesheet" href="./signup.css">
+    <link rel="stylesheet" href="signup.css">
     <title>SIGNUP</title>
 </head>
 
@@ -96,9 +96,10 @@
             <span>Or</span>
             <hr class="line">
         </div>
-        <button title="Sign In" type="submit" class="sign-in_ggl">
+        <!-- <button title="Sign In" type="submit" class="sign-in_ggl">
             <span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1280px-Gmail_icon_%282020%29.svg.png" class="ggl_img"></span><span class="ggl_txt">Sign Up with Google</span>
-        </button>
+        </button> -->
+        <input type="button" class="sign-in_ggl" value="Sign in with google">
         <button title="Sign In" type="submit" class="sign-in_fb">
             <svg style="color: blue" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-facebook" viewBox="0 0 16 16">
@@ -117,10 +118,10 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
         import {getDatabase, ref, get, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"; 
 
-        const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAYWp1h1C2AALmc39b6cqwv6GSqlWQrR1c",
   authDomain: "farmbuddy-106.firebaseapp.com",
   databaseURL: "https://farmbuddy-106-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -149,6 +150,26 @@
                 // window.location.href = "./dashboard.html";
             }, 2000);
         };
+
+        const signin = document.querySelector('.sign-in_ggl').addEventListener('click', () => { 
+          const provider = new GoogleAuthProvider(); 
+          signInWithPopup(auth, provider) 
+          .then((result) => { 
+            // This gives you a Google Access Token. You can use it to access the Google API. 
+            const credential = GoogleAuthProvider.credentialFromResult(result); 
+            const token = credential.accessToken; 
+            // The signed-in user info. 
+            const user = result.user; 
+          }).catch((error) => { 
+            const errorCode = error.code; 
+            const errorMessage = error.message; 
+            console.log(errorCode);
+            // The email of the user's account used. 
+            const email = error.customData.email; 
+            // The AuthCredential type that was used. 
+            const credential = GoogleAuthProvider.credentialFromError(error); 
+          }); 
+        });
 
        
         var signUp = document.querySelector('#sign_up');
@@ -199,25 +220,7 @@
 				const errorMessage = error.message;
 			});
 
-            const signin = document.getElementById('google_signin'); 
-        signin.addEventListener('click', () => { 
-          const provider = new GoogleAuthProvider(); 
-          signInWithPopup(auth, provider) 
-          .then((result) => { 
-            // This gives you a Google Access Token. You can use it to access the Google API. 
-            const credential = GoogleAuthProvider.credentialFromResult(result); 
-            const token = credential.accessToken; 
-            // The signed-in user info. 
-            const user = result.user; 
-          }).catch((error) => { 
-            const errorCode = error.code; 
-            const errorMessage = error.message; 
-            // The email of the user's account used. 
-            const email = error.customData.email; 
-            // The AuthCredential type that was used. 
-            const credential = GoogleAuthProvider.credentialFromError(error); 
-          }); 
-        });
+
     </script>
     
 
