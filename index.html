@@ -97,9 +97,7 @@
           <p>
             All the organic products to your doorstep
           </p>
-            
           </div>
-
         <div class="box">
           <img src="https://www.ischool.berkeley.edu/sites/default/files/styles/fullscreen/public/sproject_teaser_image/reversed.jpg?itok=ShdqgpJr" alt="" />
           <h3>Plant Disease Detection</h3>
@@ -183,7 +181,7 @@
                       <br>
                       <br>
             
-            <a href="cart.html" class="btn">click here</a>
+            <a  class="btn btn-cart-down">click here</a>
           </div>
       </div>
 
@@ -331,11 +329,7 @@
           </a>
           <a href="signin/up.html" class="links sig">
             <i class="fas fa-arrow-right"></i> Sign in/up
-          </a>
-          
-          
-         
-          
+          </a>   
         </div>
 
         <div class="box">
@@ -391,10 +385,19 @@
                     {
                         document.querySelector(".sin").style.display="none"; 
                         document.querySelector("#login-btn").style.display="visible";
-                  
+                        document.querySelector('.btn-cart-down').addEventListener('click',()=>{
+                          window.location.href="./cart.html";
+                        })
                        }
                     else{
                         document.querySelector("#login-btn").style.display="none";
+
+                        document.querySelector('#cart-btn').addEventListener('click',()=>{
+                          window.location.href="./signup.html";
+                        })
+                        document.querySelector('.btn-cart-down').addEventListener('click',()=>{
+                          window.location.href="./signup.html";
+                        })
                     }
 } 
 else{
