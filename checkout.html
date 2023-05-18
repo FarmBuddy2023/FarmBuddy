@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="checkout.css" />
   </head>
   <body>
-
     <div class="spinnerContainer">
       <div class="spinner"></div>
       <div class="loader">
@@ -21,9 +20,6 @@
         </div>
       </div>
     </div>
-
-
-
 
 <div id="lod">
     <div class="modal">
@@ -104,11 +100,7 @@
     </div>
   </div>
   <iframe width="560" height="315" style="display: none;" src="https://www.youtube.com/embed/hdI2bqOjy3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  <iframe width="560" height="315" style="display: none;" src="https://www.youtube.com/embed/hdI2bqOjy3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  <iframe width="560" height="315" style="display: none;" src="https://www.youtube.com/embed/hdI2bqOjy3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-  
-
+  <script src="./checkout.js"></script>
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
       import {
@@ -139,16 +131,13 @@
       const app = initializeApp(firebaseConfig);
       const db = getDatabase();
       const dbref = ref(db);
-
-      
-      const url = document.querySelector('#btn').addEventListener('click', GetData);
-      
-      function GetData() {
+ 
+      const url = document.querySelector('#btn').addEventListener('click', ()=>
+      {
         const addr = document.querySelector('#password').value;
         const phno = document.querySelector('.phone').value;
         console.log(addr);
         const dbref = ref(db);
-        
         get(child(dbref, "people/" + "Name"))
         .then((snapshot)=>{
           if(snapshot.exists()){
@@ -162,8 +151,7 @@
                           orders: order+1,
                           Phone: phno,
                         });
-                         
-                  
+                        window.location.href="./profile.html"
                 } else {
                   alert("No data found");
                 }
@@ -177,20 +165,7 @@
           .catch((error)=>{
             alert(error)
           }) 
-          
-
-
-
-
-          
-        }
+        });
     </script>
-    <script>
-      const profile=document.querySelector('.purchase--btn');
-        profile.addEventListener('click',function(){
-          window.location.href="./profile.html";
-        })
-    </script>
-    <script src="./checkout.js"></script>
   </body>
 </html>
