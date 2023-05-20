@@ -96,7 +96,7 @@ CPU Platform-AMD Milian
 Architecture-x86/64
 Zone-Las Vegas(us-west4-b) 
 ```
-- [34.125.9.93](http://34.125.9.93)
+- [34.125.86.74](http://34.125.86.74)
 <img src="https://raw.githubusercontent.com/STRIDER1512/FarmBuddy/main/FarmBuddy/images/gfg2.png"><br>
 
 ##  Contributors:
