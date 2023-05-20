@@ -1,5 +1,5 @@
 # FarmBuddy
-<img src="C:\Users\srira\Pictures\Screenshots\gfg.png">
+<img src="https://raw.githubusercontent.com/STRIDER1512/FarmBuddy/main/FarmBuddy/images/gfg.png">
 
 ## Introduction 
 
