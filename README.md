@@ -97,8 +97,7 @@ Architecture-x86/64
 Zone-Las Vegas(us-west4-b) 
 ```
 - [34.125.9.93](http://34.125.9.93)
-<img src="https://user-images.githubusercontent.com/95526528/232857975-04ff720c-b5bf-4e5d-92ef-953dc9ef121f.png">
-<img src="https://user-images.githubusercontent.com/95526528/232858102-55f2ddcd-b4d0-4ee8-8ff8-89170c718bd9.png"><br>
+<img src="https://raw.githubusercontent.com/STRIDER1512/FarmBuddy/main/FarmBuddy/images/gfg2.png"><br>
 
 ##  Contributors:
 
