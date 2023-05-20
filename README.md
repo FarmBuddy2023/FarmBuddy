@@ -1,5 +1,5 @@
 # FarmBuddy
-<img src="https://user-images.githubusercontent.com/95526528/232857161-ba1ea007-f656-4962-9bd1-829fdd925184.png">
+<img src="C:\Users\srira\Pictures\Screenshots\gfg.png">
 
 ## Introduction 
 
